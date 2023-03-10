@@ -1,0 +1,110 @@
+.form {
+  background: linear-gradient(0, #f7f3ff 0%, $white 100%);
+  border-radius: 20px;
+  padding: 10px 20px 20px;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+  margin: 30px 0;
+  color: $purple;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__box1 {
+    width: 40%;
+  }
+
+  &__box2 {
+    width: 55%;
+  }
+
+  &__control {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__label {
+    display: inline-block;
+    width: 35%;
+  }
+
+  &__txt-label {
+    width: 15%;
+    margin-right: 15px;
+  }
+
+  &__name-required {
+    width: 65%;
+  }
+
+  &__name-input {
+    width: 100%;
+  }
+
+  &__input,
+  &__date {
+    width: 65%;
+  }
+
+  &__textarea {
+    resize: none;
+    width: 100%;
+  }
+
+  &__input,
+  &__name-input,
+  &__textarea,
+  &__date {
+    appearance: none;
+    -webkit-appearance: none;
+    color: $black;
+    font-family: "Cerebri Sans", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    border-color: transparent;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    display: inline-block !important;
+    visibility: visible !important;
+
+    &:focus {
+      border-color: $purple !important;
+      box-shadow: none;
+      outline: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+    }
+  }
+
+  &__txt-required {
+    width: 80%;
+  }
+
+  &__error {
+    font-size: 11px;
+    font-weight: lighter;
+    color: $red;
+    margin: 5px 0 0 5px;
+    display: none;
+  }
+
+  &__btn-submit {
+    background-color: $purple;
+    color: $white;
+    display: inline-block;
+    border: 1px solid $purple;
+    border-radius: 13px;
+    text-align: center;
+    padding: 8px 25px;
+    width: 100%;
+    margin-top: 30px;
+
+    &:hover {
+      cursor: pointer;
+      color: $purple;
+      background-color: transparent;
+    }
+  }
+}

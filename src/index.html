@@ -10,6 +10,38 @@
 <body>
 <main>
     <div class="container">
+        <form class="form">
+            <h2 class="form__title">Add your comment</h2>
+            <div class="form__inner">
+                <div class="form__box1">
+                    <div class="form__control">
+                        <label for="name" class="form__label">Name * :</label>
+                        <div class="form__name-required">
+                            <input type="text" class="form__name-input" id="name"/>
+                            <div class="form__error">Field is required!</div>
+                        </div>
+                    </div>
+                    <div class="form__control">
+                        <label for="avatarUrl" class="form__label">Avatar URL:</label>
+                        <input type="url" class="form__input" id="avatarUrl"/>
+                    </div>
+                    <div class="form__control">
+                        <label for="date" class="form__label">Date:</label>
+                        <input type="date" class="form__date" id="date"/>
+                    </div>
+                </div>
+                <div class="form__box2">
+                    <div class="form__control">
+                        <label for="text" class="form__label form__txt-label">Text * :</label>
+                        <div class="form__txt-required">
+                            <textarea id="text" class="form__textarea" rows="7"></textarea>
+                            <div class="form__error">Field is required!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="form__btn-submit">Add</button>
+        </form>
         <section class="comments" id="comments-block">
             <div class="comments__card">
                 <div class="comments__options">
