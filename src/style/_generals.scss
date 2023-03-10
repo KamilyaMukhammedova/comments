@@ -6,8 +6,9 @@
 
 body {
   margin: 0;
-  font: 400 16px 'Roboto', sans-serif;
-
+  font: 400 16px "Cerebri Sans", Helvetica, Arial, sans-serif;
+  background-color: $lightPurple;
+  color: $black;
 }
 
 .container {

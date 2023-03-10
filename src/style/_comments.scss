@@ -1,0 +1,51 @@
+.comments {
+  padding: 10px 0;
+
+  &__card {
+    background: linear-gradient(0, #f7f3ff 0%, $white 100%);
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    border-radius: 20px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__options {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+
+  &__options svg:hover {
+    cursor: pointer;
+  }
+
+  &__trash-ic {
+    margin-left: 10px;
+  }
+
+  &__box1 {
+    display: flex;
+    align-items: center;
+  }
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  &__user-name {
+    font-weight: bold;
+  }
+
+  &__date {
+    font-weight: lighter;
+    font-size: 14px;
+  }
+}
