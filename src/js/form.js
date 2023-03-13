@@ -16,58 +16,52 @@ function checkBtnSubmit() {
   }
 }
 
-userName.addEventListener('input', (event) => {
-  if (event.target.value) {
-    event.target.style.borderColor = 'transparent';
-    userNameError.style.display = 'none';
+function onInputEvent(field, errorElem) {
+  if (field.value) {
+    field.style.borderColor = 'transparent';
+    errorElem.style.display = 'none';
   }
 
   checkBtnSubmit();
+}
+
+function onBlurEvent(field, errorElem) {
+  if (!field.value) {
+    field.style.borderColor = '#f65281';
+    errorElem.style.display = 'block';
+  }
+
+  checkBtnSubmit();
+}
+
+userName.addEventListener('input', (event) => {
+  onInputEvent(event.target, userNameError);
 });
 
 userName.addEventListener('blur', (event) => {
-  if (!event.target.value) {
-    event.target.style.borderColor = '#f65281';
-    userNameError.style.display = 'inline';
-  }
-
-  checkBtnSubmit();
+  onBlurEvent(event.target, userNameError);
 });
 
 comment.addEventListener('input', (event) => {
-  if (event.target.value) {
-    event.target.style.borderColor = 'transparent';
-    commentError.style.display = 'none';
-  }
-
-  checkBtnSubmit();
+  onInputEvent(event.target, commentError);
 });
 
 comment.addEventListener('blur', (event) => {
-  if (!event.target.value) {
-    event.target.style.borderColor = '#f65281';
-    commentError.style.display = 'inline';
-  }
-
-  checkBtnSubmit();
+  onBlurEvent(event.target, commentError);
 });
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  let time;
   let commentDate;
-  const commentsArray = JSON.parse(localStorage.getItem('comments'));
-
   const inputDate = date.value;
   const currentDate = new Date().toISOString().slice(0, 10);
+  const commentsArray = JSON.parse(localStorage.getItem('comments'));
 
   if (inputDate === currentDate || !inputDate) {
     commentDate = currentDate;
-    time = new Date().toTimeString().slice(0, 5);
   } else if (inputDate < currentDate || inputDate > currentDate) {
     commentDate = inputDate;
-    time = '00:00';
   }
 
   const newComment = {
@@ -75,11 +69,10 @@ form.addEventListener('submit', (event) => {
     userName: userName.value,
     avatarUrl: avatarUrl.value ? avatarUrl.value : NO_AVATAR_IMG,
     date: commentDate,
-    time,
+    time: new Date().toTimeString().slice(0, 5),
     text: comment.value,
     isFavorite: false,
   };
-
 
   if (!commentsArray) {
     const commentsNewArray = [];
