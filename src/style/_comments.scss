@@ -2,7 +2,6 @@
   padding: 10px 0;
 
   &__card {
-    //background: linear-gradient(0, #f7f3ff 0%, $white 100%);
     background-color: $white;
     box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
     border-radius: 20px;
@@ -39,6 +38,7 @@
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
   }
 
   &__user-name {
