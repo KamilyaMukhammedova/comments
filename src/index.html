@@ -10,37 +10,43 @@
 <body>
 <main>
     <div class="container">
-        <form class="form">
+        <form class="form" id="new-comment-form">
             <h2 class="form__title">Add your comment</h2>
             <div class="form__inner">
                 <div class="form__box1">
                     <div class="form__control">
-                        <label for="name" class="form__label">Name * :</label>
+                        <label for="user-name" class="form__label">Name * :</label>
                         <div class="form__name-required">
-                            <input type="text" class="form__name-input" id="name"/>
-                            <div class="form__error">Field is required!</div>
+                            <input type="text" class="form__name-input" id="user-name" name="user-name"/>
+                            <div class="form__error" id="user-name-error">Field is required!</div>
                         </div>
                     </div>
                     <div class="form__control">
                         <label for="avatarUrl" class="form__label">Avatar URL:</label>
-                        <input type="url" class="form__input" id="avatarUrl"/>
+                        <input type="url" class="form__input" id="avatarUrl" name="avatarUrl"/>
                     </div>
                     <div class="form__control">
                         <label for="date" class="form__label">Date:</label>
-                        <input type="date" class="form__date" id="date"/>
+                        <input
+                                type="date"
+                                class="form__date"
+                                id="date"
+                                name="date"
+                                max="2023-12-31"
+                        />
                     </div>
                 </div>
                 <div class="form__box2">
                     <div class="form__control">
-                        <label for="text" class="form__label form__txt-label">Text * :</label>
+                        <label for="comment" class="form__label form__txt-label">Text * :</label>
                         <div class="form__txt-required">
-                            <textarea id="text" class="form__textarea" rows="7"></textarea>
-                            <div class="form__error">Field is required!</div>
+                            <textarea id="comment" class="form__textarea" name="comment" rows="7"></textarea>
+                            <div class="form__error" id="comment-error">Field is required!</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="form__btn-submit">Add</button>
+            <button type="submit" class="form__btn-submit" id="btn-submit" disabled>Add</button>
         </form>
         <section class="comments" id="comments-block">
             <div class="comments__card">
