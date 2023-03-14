@@ -13,11 +13,11 @@ function modifyComments(arr, commentId, value) {
 
     return item;
   });
-  localStorage.setItem('comments', JSON.stringify(modifiedComments));
+  localStorage.setItem('comments', JSON.stringify(modifiedComments.reverse()));
 }
 
 function getCommentsFromLocalStorage() {
-  return JSON.parse(localStorage.getItem('comments'));
+  return JSON.parse(localStorage.getItem('comments')).reverse();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       document.getElementById(comment.id + 'trash').addEventListener('click', () => {
         const filteredComments = commentsArray.filter(item => item.id !== comment.id);
-        localStorage.setItem('comments', JSON.stringify(filteredComments));
+        localStorage.setItem('comments', JSON.stringify(filteredComments.reverse()));
         location.reload();
       });
 

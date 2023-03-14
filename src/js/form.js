@@ -8,8 +8,14 @@ const userNameError = document.getElementById('user-name-error');
 const commentError = document.getElementById('comment-error');
 const btnSubmit = document.getElementById('btn-submit');
 
+function checkCommentTextArea() {
+  return comment.value.length > 0 && comment.value.replace(/\s/g, '').length !== 0;
+}
+
 function checkBtnSubmit() {
-  if (userName.value && comment.value) {
+  const commentWithoutSpaces = checkCommentTextArea();
+
+  if (userName.value && commentWithoutSpaces) {
     btnSubmit.disabled = false;
   } else {
     btnSubmit.disabled = true;
@@ -34,25 +40,7 @@ function onBlurEvent(field, errorElem) {
   checkBtnSubmit();
 }
 
-userName.addEventListener('input', (event) => {
-  onInputEvent(event.target, userNameError);
-});
-
-userName.addEventListener('blur', (event) => {
-  onBlurEvent(event.target, userNameError);
-});
-
-comment.addEventListener('input', (event) => {
-  onInputEvent(event.target, commentError);
-});
-
-comment.addEventListener('blur', (event) => {
-  onBlurEvent(event.target, commentError);
-});
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-
+function createNewComment() {
   let commentDate;
   const inputDate = date.value;
   const currentDate = new Date().toISOString().slice(0, 10);
@@ -90,6 +78,46 @@ form.addEventListener('submit', (event) => {
   btnSubmit.disabled = true;
 
   location.reload();
+}
+
+function submitOnEnter(e) {
+  const commentWithoutSpaces = checkCommentTextArea();
+  if (e.key === 'Enter' && userName.value && commentWithoutSpaces) {
+    createNewComment();
+  }
+}
+
+userName.addEventListener('input', (event) => {
+  onInputEvent(event.target, userNameError);
+});
+
+userName.addEventListener('blur', (event) => {
+  onBlurEvent(event.target, userNameError);
+});
+
+comment.addEventListener('input', (event) => {
+  onInputEvent(event.target, commentError);
+});
+
+comment.addEventListener('blur', (event) => {
+  if (event.target.value.replace(/\s/g, '').length === 0) {
+    event.target.style.borderColor = '#f65281';
+    commentError.style.display = 'block';
+  }
+  checkBtnSubmit();
+});
+
+comment.addEventListener('keydown', (event) => {
+  submitOnEnter(event);
+});
+
+userName.addEventListener('keydown', (event) => {
+  submitOnEnter(event);
+});
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  createNewComment();
 });
 
 
